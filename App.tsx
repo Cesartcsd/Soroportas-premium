@@ -56,7 +56,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/technical" element={<Technical onOpenContact={openContact} />} />
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects" element={<Projects onOpenContact={openContact} />} />
             <Route path="/architects" element={<Architects onOpenContact={openContact} />} />
           </Routes>
         </main>

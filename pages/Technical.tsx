@@ -4,6 +4,11 @@ interface TechnicalProps {
   onOpenContact: () => void;
 }
 
+const ModelViewer = (props: any) => {
+  // @ts-ignore
+  return <model-viewer {...props} />;
+};
+
 const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
   return (
     <div className="flex flex-col items-center w-full bg-background-light dark:bg-background-dark animate-fade-in">
@@ -15,13 +20,13 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
         </div>
         <div className="relative z-10 container mx-auto px-6 max-w-[960px] text-center mt-10 animate-slide-up">
           <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4 border border-primary/20 backdrop-blur-sm">
-            Technical Specifications
+            Especificações Técnicas
           </span>
           <h1 className="text-white text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-6">
-            Excellence in <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-200">Every Detail</span>
+            Excelência em <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-200">Cada Detalhe</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            Discover the engineering precision behind our premium architectural doors. Where artisanal craft meets industrial perfection.
+            Descubra a precisão da engenharia por trás de nossas portas arquitetônicas premium. Onde o artesanato encontra a perfeição industrial.
           </p>
         </div>
       </section>
@@ -35,7 +40,7 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
                   <div className="p-2 rounded-lg bg-primary/10 text-primary">
                     <span className="material-symbols-outlined text-2xl">view_in_ar</span>
                   </div>
-                  <span className="text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">3D Interaction</span>
+                  <span className="text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">Interação 3D</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Inspecione em Detalhes</h2>
                 <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -66,7 +71,7 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
                    <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                 </div>
                 
-                <model-viewer 
+                <ModelViewer 
                    src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/SheenChair/glTF-Binary/SheenChair.glb"
                    poster="https://lh3.googleusercontent.com/aida-public/AB6AXuC1F-0wzG4Kj_5aQ2oJ2wT1zF8sR6s_5eZ6eY6fX7gH8iJ9jK0kL1mN2oP3qQ4rS5tT6uV7wW8xY9z0A1bB2c3dE4fG5hI6jK7lM8nO9pP0qR1sT2uV3wX4yZ5aB6cD7eE8fF9gH0iJ1kL2mN3o"
                    alt="Modelo 3D de Cadeira com acabamento premium"
@@ -82,7 +87,7 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
                     <span className="material-symbols-outlined">view_in_ar</span>
                     Ver em AR
                   </button>
-                </model-viewer>
+                </ModelViewer>
                 
                 <div className="absolute bottom-6 left-6 pointer-events-none">
                    <div className="bg-white/80 dark:bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
@@ -106,8 +111,8 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
                 <div className="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"></div>
                 <div className="w-4 h-4 bg-primary rounded-full border-2 border-white relative z-10 shadow-lg"></div>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 bg-white/95 dark:bg-zinc-900/95 backdrop-blur rounded p-3 shadow-xl opacity-0 group-hover/hotspot:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <p className="text-xs font-bold text-slate-900 dark:text-white mb-1">Sustainable Sourcing</p>
-                  <p className="text-[10px] text-slate-500">Certified FSC wood from managed forests.</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white mb-1">Origem Sustentável</p>
+                  <p className="text-[10px] text-slate-500">Madeira certificada FSC de florestas manejadas.</p>
                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white/95 dark:bg-zinc-900/95 rotate-45"></div>
                 </div>
               </div>
@@ -121,16 +126,16 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Madeiras Nobres</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-normal leading-relaxed">
-              Our selection process begins at the source. We exclusively utilize premium hardwoods chosen for their density, stability, and exceptional grain patterns. Each piece is treated to resist moisture and ensure longevity in tropical climates.
+              Nosso processo de seleção começa na fonte. Utilizamos exclusivamente madeiras nobres escolhidas por sua densidade, estabilidade e padrões de veios excepcionais. Cada peça é tratada para resistir à umidade e garantir longevidade em climas tropicais.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
               <div className="flex flex-col gap-2 p-4 rounded-lg bg-slate-100 dark:bg-white/5">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">Premium Treatment</h3>
-                <p className="text-sm text-slate-500">Autoclave processing for termite and decay resistance.</p>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">Tratamento Premium</h3>
+                <p className="text-sm text-slate-500">Processamento em autoclave para resistência a cupins e apodrecimento.</p>
               </div>
               <div className="flex flex-col gap-2 p-4 rounded-lg bg-slate-100 dark:bg-white/5">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">Selected Grain</h3>
-                <p className="text-sm text-slate-500">Hand-picked veneers for aesthetic perfection and consistency.</p>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">Grãos Selecionados</h3>
+                <p className="text-sm text-slate-500">Lâminas selecionadas manualmente para perfeição estética e consistência.</p>
               </div>
             </div>
           </div>
@@ -143,25 +148,25 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
           <div className="flex flex-col gap-6 order-2 md:order-1">
             <div className="flex items-center gap-3">
               <span className="material-symbols-outlined text-primary text-3xl">door_sliding</span>
-              <span className="text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">Mechanics</span>
+              <span className="text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">Mecânica</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Ferragens de Alta Performance</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-normal leading-relaxed">
-              Silence is the true sound of luxury. Our proprietary hinge systems are engineered from 304 Stainless Steel, capable of supporting heavy architectural doors while delivering feather-light operation.
+              O silêncio é o verdadeiro som do luxo. Nossos sistemas de dobradiças proprietários são projetados em Aço Inoxidável 304, capazes de suportar portas arquitetônicas pesadas enquanto oferecem uma operação leve como uma pluma.
             </p>
             <ul className="space-y-4 mt-4">
               <li className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-primary mt-1 text-xl">check_circle</span>
                 <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white">Silent Motion Technology</h4>
-                  <p className="text-sm text-slate-500">Self-lubricating bearings for noise-free opening.</p>
+                  <h4 className="font-bold text-slate-900 dark:text-white">Tecnologia de Movimento Silencioso</h4>
+                  <p className="text-sm text-slate-500">Rolamentos autolubrificantes para abertura sem ruído.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-primary mt-1 text-xl">shield</span>
                 <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white">Corrosion Resistant</h4>
-                  <p className="text-sm text-slate-500">Marine-grade finishing suitable for coastal areas.</p>
+                  <h4 className="font-bold text-slate-900 dark:text-white">Resistente à Corrosão</h4>
+                  <p className="text-sm text-slate-500">Acabamento de grau naval adequado para áreas litorâneas.</p>
                 </div>
               </li>
             </ul>
@@ -175,8 +180,8 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
                 <div className="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"></div>
                 <div className="w-4 h-4 bg-primary rounded-full border-2 border-white relative z-10 shadow-lg"></div>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 bg-white/95 dark:bg-zinc-900/95 backdrop-blur rounded p-3 shadow-xl opacity-0 group-hover/hotspot:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <p className="text-xs font-bold text-slate-900 dark:text-white mb-1">Precision Milling</p>
-                  <p className="text-[10px] text-slate-500">CNC machined components for exact fit.</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white mb-1">Usinagem de Precisão</p>
+                  <p className="text-[10px] text-slate-500">Componentes usinados em CNC para ajuste exato.</p>
                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white/95 dark:bg-zinc-900/95 rotate-45"></div>
                 </div>
               </div>
@@ -189,8 +194,8 @@ const Technical: React.FC<TechnicalProps> = ({ onOpenContact }) => {
       <section className="relative w-full py-24 px-6 bg-[#112116] overflow-hidden text-center">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#17cf54 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Projecting a Masterpiece?</h2>
-          <p className="text-gray-400 text-lg max-w-2xl">Every architectural project has unique requirements. Let's discuss the technical specifications that best fit your design vision.</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Projetando uma Obra-Prima?</h2>
+          <p className="text-gray-400 text-lg max-w-2xl">Cada projeto arquitetônico tem requisitos únicos. Vamos discutir as especificações técnicas que melhor se adaptam à sua visão de design.</p>
           <button onClick={onOpenContact} className="group flex items-center justify-center gap-3 bg-primary hover:bg-[#15bd4d] text-slate-900 px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25">
             <span className="material-symbols-outlined text-2xl">chat</span>
             Conversar sobre especificações

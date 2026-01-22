@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Project } from '../types';
+import ProjectDetailsModal from '../components/ProjectDetailsModal';
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  onOpenContact?: () => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onOpenContact }) => {
   const [filter, setFilter] = useState<string>('all');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
     {
@@ -11,42 +17,48 @@ const Projects: React.FC = () => {
       category: 'pivotante',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBt3s7dpzoz_p_hTOIW-WrJI8hve2dDTw-o3vyJ7g0CPFgBMM8FqAEOIgc-VOr5iYK_MBGJ0E-efHcra2uCU2CAa6oulAp90lGN4NRfcqtnSPoFeQbvK9wpcV_adFzEXi-uRe-F8D87pnwji4mFB-bvzTZgHeFE-k17S4LJ-svLPyYMB2pNRWkXq4UJ8x5Ep1kQPixcHIXIiRmWpPdFkmwcwO4fSvMfPyZPj6NbMVdT5SQH-1d2VfjfySvNVm-FYJeMuXER_4Isncs',
       description: 'Pivotante 5m • Freijó Natural',
-      featured: true
+      featured: true,
+      tags: ['Madeira Maciça', 'Pé Direito Duplo']
     },
     {
       id: 2,
       title: 'Corredor de Luz',
       category: 'interna',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAs4AoSE9MrHG-AnFc7Jh5ittltwf5YDhIfDYIkein_ldSSfE23-eYwd35op8gzYsDPHyFzDpf3TEh5nDFLNq-SFWD6kiLgWAGyKBZiM0BpfcoqdLXtMaSoX7p_4oQWNAcWK0pZnAW_cFt2Gx7b0_kuKBYmCXdATCbI6i-RlpzZ4WCxz951iwPgWM-WPbdqR4R5XeX27orcCf27GR5nkjmYATJ5BzJ_Q2xdyXxaB5r3qBD0CFtm1d0kBOAEIaGlUl36nkCZrhq7fbg',
-      description: 'Vidro Canelado • Perfil Preto'
+      description: 'Vidro Canelado • Perfil Preto',
+      tags: ['Vidro', 'Minimalista']
     },
     {
       id: 3,
       title: 'Suíte Master',
       category: 'interna',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgmIpk8qcP3NpC-NAGc8CbknTun8u8-kzxlp65TCh6pVlWqCF_o4CV5Lh3_E0k2VlaiLw70osdsLABjgmX-oj9JGrjhcT17czI87VYvJ6Nf2Dmvb_KhxHN7mpR99j1lpj3WmhFbpMuztkX3uVcvcFUGfA__7twVOhIEZyIIrwBZoVUlw5AfNhp4q8tFgqBOX9yFDL2VCG-KKa2A2ucaImkfbjuLHq8UW8W1lR9megICwFbVGeh71g1IC8UnZ9aqS2sKT_OGREnx3U',
-      description: 'Laca Branca'
+      description: 'Laca Branca',
+      tags: ['Acústica', 'Laca']
     },
     {
       id: 4,
       title: 'Loft Industrial',
       category: 'aluminio',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAndOfmzpcp2GGhzlswwtVUj0YXSaKu9PM-FwY6WfcPukCvh8sODcVw2VSZQX8FUKXWUU6Edi8pgoYiXRwXKAj7QCumqSGB-BndVK3RJcuSxzwulrjn1NxG8Ny_6jbOBr2uHpNomHendtfwY7-25po68nX93lvg6blyfZGKqagHFD1IJ0Xdh9kqPGz2XSil2i-5FzTQPLrE9C2VKYoDcgGa7Flxki5VOVa481_IPVsCVjOwch2RZuvvsEP9loUG2DJItrG0o12P2VE',
-      description: 'Slide System'
+      description: 'Slide System',
+      tags: ['Industrial', 'Alumínio']
     },
     {
       id: 5,
       title: 'Residência Praia',
       category: 'madeira',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCjsEh59awOKHCs2Idbljxlv-Q6dLRKSAxUumM_2nnbU5-8WQyqnrEUFKTEm-4csBalKoK_Eo6MqMSPvxslEMTfuMFoRIqDhD4Lj7Q7vVs-P93dmfYorQ_WOf6DB2TAHkBTQg0JP0wgkGBDF9DJROCsyLKw6ta-3-45GUbRy4hMf9v5zgsDB6TKOEyKeIER2zKI16WmskGazBFf3VtyDqTcyu2GWsFhlv7GDBbJgyvTGE_XjchTW4pe-3hvb8CpDoWQzyZWfgftQNo',
-      description: 'Painel Ripado • Cumari'
+      description: 'Painel Ripado • Cumaru',
+      tags: ['Ripado', 'Cumaru']
     },
     {
       id: 6,
       title: 'Detalhes de Acabamento',
       category: 'madeira',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABLky5OD9mW5yXKH-eHBzIcE5YB7AYdDOgQi0blZztO237XeqZr9SLwGKEeUoZiYl1F-xnyd5LNXD5HLgeDo7nUXS4G7PszI9ybHXpk2ImeFZjJAea0GoiJERrx8VH9dOcTZR7ygF0uA0aatciwqHykoB_ap3uCrNzf4pN4Byau0Q4U7ksoN44__Kkek4uHH4mUpL_r2ZXIke-Ejmk7CLtSHb1A3IkR2MoOqcJCtGfjb3trnVl73Z0bjw27Opj6TOtsdjRC0SN4nk',
-      description: 'Acessórios Premium'
+      description: 'Acessórios Premium',
+      tags: ['Detalhes', 'Maçanetas']
     }
   ];
 
@@ -99,6 +111,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, idx) => (
              <div 
                key={project.id} 
+               onClick={() => setSelectedProject(project)}
                className={`group relative rounded-lg overflow-hidden cursor-pointer animate-fade-in ${project.featured ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1'}`}
                style={{ animationDelay: `${idx * 0.1}s` }}
              >
@@ -107,6 +120,11 @@ const Projects: React.FC = () => {
                   style={{ backgroundImage: `url('${project.image}')` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                   <div className="bg-white/20 backdrop-blur-md p-2 rounded-full text-white">
+                      <span className="material-symbols-outlined">visibility</span>
+                   </div>
+                </div>
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 flex flex-col items-start gap-2">
                   {project.featured && (
                     <span className="inline-flex items-center rounded-sm bg-primary/90 px-2 py-1 text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm">
@@ -124,6 +142,14 @@ const Projects: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Details Modal */}
+      <ProjectDetailsModal 
+        project={selectedProject} 
+        isOpen={!!selectedProject} 
+        onClose={() => setSelectedProject(null)}
+        onRequestQuote={onOpenContact}
+      />
     </div>
   );
 };

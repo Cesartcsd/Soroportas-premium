@@ -31,23 +31,3 @@ export interface CollectionItem {
   image: string;
   reverse?: boolean;
 }
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        src?: string;
-        alt?: string;
-        ar?: boolean;
-        'auto-rotate'?: boolean;
-        'camera-controls'?: boolean;
-        'shadow-intensity'?: string;
-        poster?: string;
-        exposure?: string;
-        'environment-image'?: string;
-        scale?: string; 
-        'disable-zoom'?: boolean;
-      }, HTMLElement>;
-    }
-  }
-}

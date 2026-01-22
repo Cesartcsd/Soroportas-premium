@@ -6,30 +6,30 @@ const Collection: React.FC = () => {
     {
       id: 1,
       number: '01',
-      category: 'First Impressions',
+      category: 'Primeiras Impressões',
       title: 'PORTAS DE ENTRADA',
-      subtitle: 'Solid Walnut & Monumental Presence',
-      description: 'The first impression of a home. Designed for security, acoustic isolation, and aesthetic weight. Our entrance series features solid cores and weather-resistant finishes that stand the test of time.',
+      subtitle: 'Nogueira Maciça & Presença Monumental',
+      description: 'A primeira impressão de uma casa. Projetada para segurança, isolamento acústico e peso estético. Nossa série de entrada apresenta núcleos maciços e acabamentos resistentes às intempéries que resistem ao teste do tempo.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCkO_H6U6VK5bCCskElRhslVZCP7hObXnzZ84y-qJkKgobp1ieEhnA2ArcSOyG-2Swdwm1E1US_DRGwCrp99sNzzygsxh_o9l3MSIyJvFTjb3_ilcQNVibwFwTEv_VtHW6Uf6KsG_x22CP_BHzLXIdNUwii12pVgKfw-FBhpqY1kHcrKEIpL_58MpO2cyrFIxM4rGBunrtsd4BeV-_wCxLM7K5QP2fuvGDnZGASShqz76d63CRBK_1LvJImb68gl8mIXttmQi2i8CE',
       reverse: false
     },
     {
       id: 2,
       number: '02',
-      category: 'Seamless Transitions',
+      category: 'Transições Fluidas',
       title: 'AMBIENTES SOCIAIS',
-      subtitle: 'Invisible Frames & Pivoting Systems',
-      description: 'Uniting living spaces with elegance. Our social collection features floor-to-ceiling pivoting systems and invisible frames that allow architecture to flow uninterrupted between rooms.',
+      subtitle: 'Batentes Invisíveis & Sistemas Pivotantes',
+      description: 'Unindo ambientes de convívio com elegância. Nossa coleção social apresenta sistemas pivotantes do chão ao teto e batentes invisíveis que permitem que a arquitetura flua ininterruptamente entre os cômodos.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwx52e7XrWeP91Mbbm0JeMOiIycAlt0o4u99jSj9qLTtDUjI9e6-EHMrH6uJ4AkvAlCppKrYG5M2wYzZW8glotextrJjPoC1H1KxVmKswFVap2VQi-5nNXLtCxx9c1Orj5C4MI10dt81Sce4c6ZAuEEjQ67BMPETuPpdhDo9NRNYH4fWCWCzxgc4pQZ1nu_Ulbg_CqKoBYSdZG3J4DxFivn_3IozsvUXzkgiX-4JW1fInp26o382GQq2F8-go2h27v9BTddUkn9LA',
       reverse: true
     },
     {
       id: 3,
       number: '03',
-      category: 'Sanctuary',
+      category: 'Santuário',
       title: 'ÁREAS PRIVATIVAS',
-      subtitle: 'Smooth Lacquer & Acoustic Privacy',
-      description: 'Silence and sanctuary. Minimalist designs that retreat into the wall, prioritizing privacy and calm. Engineered with high-density cores for superior noise reduction in sleeping quarters.',
+      subtitle: 'Laca Lisa & Privacidade Acústica',
+      description: 'Silêncio e refúgio. Designs minimalistas que se recolhem na parede, priorizando a privacidade e a calma. Engenharia com núcleos de alta densidade para redução de ruído superior em quartos de dormir.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJgzhbLsSkjY0Sl_TMF736-4uKw9s69QhteCYABSh9kOkD0nzWANVem4Ym1BheXQVovIyJeKfi7nNPe0oB_C7OQHCN382XwpCdU_tpKFoLa06iMNGm70TpKGyMqAU4iawXWHqBnBGmfTRAqvpsyPiftCvgukdf4K4DrytEIBkXfq1pDx7R1XBIktKE9-UiACo24r4U8EkvRuLUall3z0FKkLpai2YzbXYxbCp6LxEPD6ZCu2ZeQx-iTU2iumW_iTH0XYcF_kgXetU',
       reverse: false
     }
@@ -39,12 +39,12 @@ const Collection: React.FC = () => {
     <div className="w-full flex flex-col items-center animate-fade-in">
       {/* Page Heading */}
       <section className="w-full max-w-[960px] px-6 py-20 md:py-32 flex flex-col gap-6 text-center md:text-left animate-slide-up">
-        <span className="text-primary font-bold uppercase tracking-widest text-xs md:text-sm">The Collection</span>
+        <span className="text-primary font-bold uppercase tracking-widest text-xs md:text-sm">A Coleção</span>
         <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-[-0.02em] text-slate-900 dark:text-white">
-          Defined by purpose.<br/>Curated by atmosphere.
+          Definido pelo propósito.<br/>Curado pela atmosfera.
         </h1>
         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-          Architecture begins at the threshold. Discover our selection of doors categorized by their architectural impact, from the monumental entrance to the private sanctuary.
+          A arquitetura começa no limiar. Descubra nossa seleção de portas categorizadas pelo seu impacto arquitetônico, da entrada monumental ao santuário privado.
         </p>
       </section>
 
