@@ -1,21 +1,33 @@
+import React from 'react';
+
+export interface Project {
+  id: number;
+  title: string;
+  category: 'madeira' | 'aluminio' | 'pivotante' | 'interna';
+  image: string;
+  description: string;
+  featured?: boolean;
+  tags?: string[];
+}
+
+export interface NavLink {
+  label: string;
+  path: string;
+}
+
+export interface FeatureProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
 export interface CollectionItem {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
+  id: number;
+  number: string;
   category: string;
-}
-
-export interface FeatureItem {
-  id: string;
   title: string;
+  subtitle: string;
   description: string;
-  iconName: string;
-}
-
-export interface Testimonial {
-  id: string;
-  text: string;
-  author: string;
-  location: string;
+  image: string;
+  reverse?: boolean;
 }

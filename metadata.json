@@ -1,4 +1,5 @@
 {
-  "name": "Soroportas - Portas de Alto Padrão",
-  "description": "Site institucional premium focado em portas de alto padrão e conversão via WhatsApp."
+  "name": "Soroportas_v1",
+  "description": "Website de portas  premium apresentando uma coleção de produtos, especificações técnicas e galeria de projetos.",
+  "requestFramePermissions": []
 }
