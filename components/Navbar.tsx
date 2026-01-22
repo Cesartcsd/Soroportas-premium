@@ -1,121 +1,117 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { NavLink } from '../types';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, FileText } from 'lucide-react';
+import { BRAND_NAME, WHATSAPP_LINK } from '../constants';
 
 interface NavbarProps {
-  toggleTheme: () => void;
-  isDark: boolean;
-  onOpenContact: () => void;
+  onOpenQuote?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDark, onOpenContact }) => {
+const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
 
-  const links: NavLink[] = [
-    { label: 'Início', path: '/' },
-    { label: 'Coleção', path: '/collection' },
-    { label: 'Técnica', path: '/technical' },
-    { label: 'Projetos', path: '/projects' },
-    { label: 'Arquitetos', path: '/architects' },
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Modelos', href: '#collections' },
+    { name: 'Qualidade', href: '#features' },
+    { name: 'Processo', href: '#process' },
+    { name: 'Portfólio', href: '#gallery' },
+    { name: 'FAQ', href: '#faq' },
   ];
 
-  const isActive = (path: string) => {
-    return location.pathname === path ? 'text-primary font-bold' : 'text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-primary';
-  };
-
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/90 dark:bg-background-dark/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex h-20 items-center justify-between">
-          
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="size-8 text-primary transition-transform group-hover:scale-110">
-              <span className="material-symbols-outlined !text-4xl">door_front</span>
-            </div>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Soroportas</h2>
-          </Link>
+    <nav
+      className={`fixed top-0 w-full z-40 transition-all duration-500 ${isScrolled
+        ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5 py-3'
+        : 'bg-gradient-to-b from-black/40 to-transparent py-6'
+        }`}
+    >
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <a href="#" className={`font-serif text-2xl font-bold tracking-tight ${isScrolled ? 'text-brand-dark' : 'text-white'}`}>
+          {BRAND_NAME}
+        </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex flex-1 justify-end gap-8 items-center">
-            <div className="flex items-center gap-8">
-              {links.map((link) => (
-                <Link 
-                  key={link.path}
-                  to={link.path} 
-                  className={`text-sm font-medium transition-colors ${isActive(link.path)}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            
-            <div className="flex items-center gap-4 border-l border-slate-200 dark:border-slate-700 pl-6">
-              <button 
-                onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors"
-                aria-label="Toggle theme"
-              >
-                <span className="material-symbols-outlined text-xl">
-                  {isDark ? 'light_mode' : 'dark_mode'}
-                </span>
-              </button>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`text-sm font-medium transition-colors ${isScrolled ? 'text-gray-600 hover:text-brand-dark' : 'text-gray-200 hover:text-white'
+                }`}
+            >
+              {link.name}
+            </a>
+          ))}
 
-              <button 
-                onClick={onOpenContact}
-                className="flex cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-primary-dark text-white text-sm font-bold tracking-wide transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
-              >
-                Orçamento
-              </button>
-            </div>
-          </div>
+          {onOpenQuote && (
+            <button
+              onClick={onOpenQuote}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${isScrolled
+                ? 'text-brand-dark hover:text-brand-primary'
+                : 'text-white/90 hover:text-white'
+                }`}
+            >
+              <FileText className="w-4 h-4" />
+              Orçamento
+            </button>
+          )}
 
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-slate-900 dark:text-white"
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${isScrolled
+              ? 'bg-brand-dark text-white hover:bg-brand-primary'
+              : 'bg-white text-brand-dark hover:bg-gray-100'
+              }`}
           >
-            <span className="material-symbols-outlined text-3xl">
-              {isMobileMenuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
+            Fale Conosco
+          </a>
         </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-current"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className={isScrolled ? 'text-gray-900' : 'text-white'} />
+          ) : (
+            <Menu className={isScrolled ? 'text-gray-900' : 'text-white'} />
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-700 shadow-xl animate-fade-in">
-          <div className="flex flex-col p-6 gap-4">
-            {links.map((link) => (
-              <Link 
-                key={link.path}
-                to={link.path}
-                className={`text-lg font-medium py-2 border-b border-slate-100 dark:border-white/5 ${isActive(link.path)}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="flex items-center justify-between mt-4">
-              <span className="text-sm font-medium text-slate-500 dark:text-slate-400">Modo Escuro</span>
-              <button 
-                onClick={toggleTheme}
-                className={`w-12 h-6 rounded-full p-1 transition-colors ${isDark ? 'bg-primary' : 'bg-slate-300'}`}
-              >
-                <div className={`w-4 h-4 bg-white rounded-full shadow-md transform transition-transform ${isDark ? 'translate-x-6' : ''}`} />
-              </button>
-            </div>
-            <button 
-              onClick={() => {
-                onOpenContact();
-                setIsMobileMenuOpen(false);
-              }}
-              className="mt-4 w-full h-12 rounded-lg bg-primary text-white font-bold"
+        <div className="absolute top-full left-0 w-full bg-white shadow-lg py-8 px-6 flex flex-col gap-6 md:hidden">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-gray-800 text-lg font-medium border-b border-gray-100 pb-2"
             >
-              Solicitar Orçamento
-            </button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-dark text-white text-center py-3 rounded-md font-medium"
+          >
+            Falar no WhatsApp
+          </a>
         </div>
       )}
     </nav>
